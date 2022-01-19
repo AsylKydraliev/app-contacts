@@ -31,14 +31,16 @@ export class EditContactsComponent implements OnInit, OnDestroy {
       if(this.user) {
         this.setFormValue({
           name: this.user.name,
-          phone: this.user.phone,
           email: this.user.email,
+          website: this.user.website,
+          phone: this.user.phone,
         })
       }else{
         this.setFormValue({
           name: '',
-          phone: '',
           email: '',
+          website: '',
+          phone: '',
         })
       }
     })
@@ -65,6 +67,7 @@ export class EditContactsComponent implements OnInit, OnDestroy {
     users[this.index].name = user.name;
     users[this.index].phone = user.phone;
     users[this.index].email = user.email;
+    users[this.index].website = user.website;
     this.changeArrayLocalStorage(users);
   }
 

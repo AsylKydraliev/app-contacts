@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { UsersService } from '../shared/users.service';
 import { Users } from '../shared/users.model';
 import { Subscription } from 'rxjs';
@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 export class ContactsComponent implements OnInit, OnDestroy {
   users: Users [] = [];
   usersSubscription!: Subscription;
+  @ViewChild('searchInput') searchInput!: ElementRef;
 
   constructor(private usersService: UsersService) {}
 
@@ -40,6 +41,26 @@ export class ContactsComponent implements OnInit, OnDestroy {
   // getting index by clicked user
   getUserIndex(id: number){
     this.usersService.getUserFromStorage(id);
+  }
+
+  // search user
+  searchContact() {
+    const element = document.querySelectorAll('li');
+    const value = this.searchInput.nativeElement.value.trim();
+
+    if(value !== '') {
+      element.forEach(item => {
+        if(item.innerText.toLocaleLowerCase().search(value) === -1){
+          item.classList.add('hide');
+        }else{
+          item.classList.remove('hide');
+        }
+      })
+    }else{
+      element.forEach(item => {
+        item.classList.remove('hide');
+      })
+    }
   }
 
   // unsubscribing from events

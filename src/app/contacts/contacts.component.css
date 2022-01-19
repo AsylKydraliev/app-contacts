@@ -1,16 +1,31 @@
+.shadow{
+  padding: 0;
+}
+
 h4{
   border-radius: 7px 7px 0 0;
 }
 
-.link{
+.tbl{
   cursor: pointer;
+  background-color: whitesmoke;
+  font-size: 1em;
 }
 
-.my-card{
-  word-wrap: break-word;
+.tbl:hover{
+  background-color: #e0e0e0;
 }
 
-svg{
-  display: block;
-  margin: 0 auto;
+input{
+  margin-left: 60%;
 }
+
+.hide{
+  display: none;
+}
+
+li{
+  list-style: none;
+  padding: 10px;
+}
+

@@ -62,23 +62,6 @@ export class UsersService {
     this.userChange.next(this.user);
   }
 
-  //search users
-  searchUser(name: string) {
-    let index: Users[] = [];
-    for (let i = 0; i < this.users.length; i++){
-      if (name === this.users[i].name) {
-        index.push(this.users[i]);
-        this.users = index;
-        this.usersChange.next(this.users.slice());
-      }
-      if(!name && name !== this.users[i].name) {
-        const users: any = localStorage.getItem('users');
-        this.users = JSON.parse(users);
-        this.usersChange.next(this.users.slice());
-      }
-    }
-  }
-
   // users get of localStorage
   getUsersLocalStorage(users: Users[]) {
     this.users = users;
