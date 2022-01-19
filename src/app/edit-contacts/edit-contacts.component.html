@@ -1,1 +1,13 @@
-<p>edit-contacts works!</p>
+<div class="row m-0">
+  <form class="m-auto text-center col-sm-6 col-md-4 col-8" (ngSubmit)="Save()" #userForm="ngForm">
+    <p class="h4 mb-4">Edit</p>
+    <p>Join our mailing list. We write rarely, but only with the best content.</p>
+    <p>
+      <a routerLink="/">Back to contacts list</a>
+    </p>
+    <input type="text" class="form-control mb-4" placeholder="Name" name="name" ngModel>
+    <input type="text" class="form-control mb-4" placeholder="Phone number" name="phone" ngModel>
+    <input type="email" class="form-control mb-4" placeholder="Email" name="email" ngModel>
+    <button type="submit" class="btn btn-info col-sm-6">Save</button>
+  </form>
+</div>

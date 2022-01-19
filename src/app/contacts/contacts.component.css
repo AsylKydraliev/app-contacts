@@ -1,0 +1,11 @@
+h4{
+  border-radius: 7px 7px 0 0;
+}
+
+.link{
+  cursor: pointer;
+}
+
+.my-card{
+  word-wrap: break-word;
+}

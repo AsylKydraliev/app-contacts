@@ -10,9 +10,14 @@ import { Subject } from 'rxjs';
 
 export class UsersService {
   users!: Users[];
+  user!: Users;
   usersChange = new Subject<Users[]>();
+  userChange = new Subject<Users>();
+  localUsers: Users[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.getAllUsers();
+  }
 
   getAllUsers(){
     this.http.get<{[id: string] : Users}>('https://demo.sibers.com/users').pipe(map(result => {
@@ -20,7 +25,7 @@ export class UsersService {
         const users = result[id];
         return new Users(
           users.name,
-          users.userName,
+          users.username,
           users.email,
           users.address,
           users.phone,
@@ -37,7 +42,40 @@ export class UsersService {
       .subscribe(data => {
         this.users = [];
         this.users = data;
+        localStorage.setItem('users', JSON.stringify(this.users));
         this.usersChange.next(this.users.slice());
       });
+  }
+
+  getUserFromStorage(index: number){
+    const userData: any = localStorage.getItem('users');
+    this.localUsers = JSON.parse(userData);
+    this.localUsers.forEach(item => {
+      if(index === item.id) {
+        this.user = item;
+      }
+    })
+    this.userChange.next(this.user);
+  }
+
+  searchUser(name: string) {
+    let index: Users[] = [];
+    for (let i = 0; i < this.users.length; i++){
+      if (name === this.users[i].name) {
+        index.push(this.users[i]);
+        this.users = index;
+        this.usersChange.next(this.users.slice());
+      }
+      if(!name && name !== this.users[i].name) {
+        const users: any = localStorage.getItem('users');
+        this.users = JSON.parse(users);
+        this.usersChange.next(this.users.slice());
+      }
+    }
+  }
+
+  getUsersLocalStorage(users: Users[]) {
+    this.users = users;
+    this.usersChange.next(this.users.slice());
   }
 }

@@ -1,7 +1,7 @@
 export class Users{
   constructor(
     public name: string,
-    public userName: string,
+    public username: string,
     public email: string,
     public address: [],
     public phone: string,
@@ -14,32 +14,3 @@ export class Users{
     public id: number,
   ) {}
 }
-
-// export class Address {
-//   constructor(
-//     streetA: string,
-//     streetB: string,
-//     streetC: string,
-//     streetD: string,
-//     city: string,
-//     state: string,
-//     country: string,
-//     zipCode: string,
-//     geo: Geo[],
-//   ) {}
-// }
-//
-// export class Geo {
-//   constructor(
-//     public lat: string,
-//     public lng: string
-//   ) {}
-// }
-//
-// export class Company {
-//   constructor(
-//     public companyName: string,
-//     public catchPhrase: string,
-//     public bs: string,
-//   ) {}
-// }
