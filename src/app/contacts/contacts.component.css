@@ -9,3 +9,8 @@ h4{
 .my-card{
   word-wrap: break-word;
 }
+
+svg{
+  display: block;
+  margin: 0 auto;
+}

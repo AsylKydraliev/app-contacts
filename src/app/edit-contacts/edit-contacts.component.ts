@@ -23,9 +23,11 @@ export class EditContactsComponent implements OnInit, OnDestroy {
     ) {}
 
   ngOnInit(){
+    // subscribing event by user change
     this.userSubscription = this.usersService.userChange.subscribe((user: Users) => {
       this.user = user;
 
+      // form changes
       if(this.user) {
         this.setFormValue({
           name: this.user.name,
@@ -48,12 +50,14 @@ export class EditContactsComponent implements OnInit, OnDestroy {
     })
   }
 
+  // set data on form changes
   setFormValue(value: {[key: string]: any}) {
     setTimeout(() => {
       this.userForm.setValue(value);
     })
   }
 
+  // data saving in local storage
   Save() {
     const user = this.userForm.form.value;
     const result: any = localStorage.getItem('users');
@@ -64,6 +68,7 @@ export class EditContactsComponent implements OnInit, OnDestroy {
     this.changeArrayLocalStorage(users);
   }
 
+  // getting users from storage, clear storage and navigate home page
   changeArrayLocalStorage(users: Users[]) {
     this.usersService.getUsersLocalStorage(users);
     localStorage.clear();
@@ -71,6 +76,7 @@ export class EditContactsComponent implements OnInit, OnDestroy {
     void this.router.navigate(['/']);
   }
 
+  // unsubscribing from events
   ngOnDestroy(){
     this.userSubscription.unsubscribe();
   }

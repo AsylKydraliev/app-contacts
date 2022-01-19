@@ -16,9 +16,12 @@ export class UsersService {
   localUsers: Users[] = [];
 
   constructor(private http: HttpClient) {
-    this.getAllUsers();
+    if (this.users) {
+      this.getAllUsers();
+    }
   }
 
+  //query for all users
   getAllUsers(){
     this.http.get<{[id: string] : Users}>('https://demo.sibers.com/users').pipe(map(result => {
       return Object.keys(result).map(id => {
@@ -47,17 +50,19 @@ export class UsersService {
       });
   }
 
-  getUserFromStorage(index: number){
+  //get user from localStorage by index
+  getUserFromStorage(id: number){
     const userData: any = localStorage.getItem('users');
     this.localUsers = JSON.parse(userData);
     this.localUsers.forEach(item => {
-      if(index === item.id) {
+      if(id === item.id) {
         this.user = item;
       }
     })
     this.userChange.next(this.user);
   }
 
+  //search users
   searchUser(name: string) {
     let index: Users[] = [];
     for (let i = 0; i < this.users.length; i++){
@@ -74,6 +79,7 @@ export class UsersService {
     }
   }
 
+  // users get of localStorage
   getUsersLocalStorage(users: Users[]) {
     this.users = users;
     this.usersChange.next(this.users.slice());

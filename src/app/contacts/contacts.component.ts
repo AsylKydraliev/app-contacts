@@ -15,6 +15,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
   constructor(private usersService: UsersService) {}
 
   ngOnInit() {
+    //subscribing event by users change
     this.usersSubscription = this.usersService.usersChange.subscribe((data: Users[]) => {
       this.users = data.sort((a,b) => {
         if (a.name < b.name) {return -1}
@@ -22,9 +23,10 @@ export class ContactsComponent implements OnInit, OnDestroy {
         return 0;
       })
     });
-    this.changeArrayUsers();
+    this.changeArrayUsers(); //method call on user array changes
   }
 
+  //users array changes and sort alphabetically
   changeArrayUsers() {
     const result: any = localStorage.getItem('users');
     let users = JSON.parse(result);
@@ -35,10 +37,12 @@ export class ContactsComponent implements OnInit, OnDestroy {
     });
   }
 
-  getUserIndex(index: number){
-    this.usersService.getUserFromStorage(index);
+  // getting index by clicked user
+  getUserIndex(id: number){
+    this.usersService.getUserFromStorage(id);
   }
 
+  // unsubscribing from events
   ngOnDestroy(){
     this.usersSubscription.unsubscribe();
   }

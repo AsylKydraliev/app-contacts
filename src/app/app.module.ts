@@ -8,13 +8,15 @@ import { EditContactsComponent } from './edit-contacts/edit-contacts.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactsComponent,
     EditContactsComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

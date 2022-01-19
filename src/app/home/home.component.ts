@@ -11,6 +11,7 @@ export class HomeComponent {
 
   constructor(private usersService: UsersService) {}
 
+  // search contact method
   searchContact() {
     this.usersService.searchUser(this.searchInput.nativeElement.value);
   }
