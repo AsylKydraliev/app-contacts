@@ -1,50 +1,39 @@
-<div class="m-auto col-10 shadow">
+<div class="m-auto col-11 shadow">
   <h4 class="p-2 m-0 active bg-secondary text-white" aria-current="true">
     Contacts list
     <input
       class="form-control mr-sm-2 form-inline my-2 my-lg-0 col-3 d-inline-block"
       type="search"
-      placeholder="Search"
+      placeholder="Search name"
       aria-label="Search"
       #searchInput (input)="searchContact()"
     >
   </h4>
-  <div>
+  <div click-stop-propagation>
     <div class="row ml-2 p-2 font-weight-bold">
       <div class="col">Name</div>
-      <div class="col">Email</div>
+      <div class="col-4">Email</div>
       <div class="col">Website</div>
       <div class="col">Phone</div>
+      <div class="col-1">Edit</div>
     </div>
-    <ul class="list-group item">
-      <li *ngFor="let user of users" [routerLink]="[user.id, 'edit']" (click)="getUserIndex(user.id)"
-        class="tbl row m-0 border-bottom">
-        <span class="col-3">{{user.name}}</span>
-        <span class="col-3">{{user.email}}</span>
-        <span class="col-3">{{user.website}}</span>
-        <span class="col-3">{{user.phone}}</span>
+    <ul class="list-group item" click-stop-propagation>
+      <li *ngFor="let user of users" [routerLink]="[user.id, 'edit']" class="tbl row m-0 border-bottom"
+          click-stop-propagation
+      >
+        <span class="col" click-stop-propagation>{{user.name}}</span>
+        <span class="col-4" click-stop-propagation>{{user.email}}</span>
+        <span class="col" click-stop-propagation>{{user.website}}</span>
+        <span class="col" click-stop-propagation>{{user.phone}}</span>
+        <span class="col-1 text-center" (click)="getUserId(user.id)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+          </svg>
+        </span>
       </li>
     </ul>
   </div>
 </div>
-
-<nav aria-label="Page navigation example" class="mt-5">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-
 
 

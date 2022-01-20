@@ -1,6 +1,8 @@
 html, body{
   box-sizing: border-box;
   height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 .wrapper {
@@ -9,4 +11,3 @@ html, body{
   min-height: 100%;
   margin: 0;
 }
-

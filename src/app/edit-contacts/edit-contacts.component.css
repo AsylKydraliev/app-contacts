@@ -1,6 +1,6 @@
 form{
   border: 1px solid #e0e0e0;
-  padding: 30px 15px;
+  padding: 30px 20px;
   box-shadow: 0 0 6px 1px lightgrey;
   border-radius: 10px;
 }
@@ -11,14 +11,22 @@ form:hover{
 
 input{
   margin: 0 auto;
-  width: 75%;
+  width: 85%;
   transition: 0.5s;
 }
 
+input.ng-invalid.ng-touched{
+  box-shadow: 0 0 6px 3px red;
+}
+
 input:focus{
-  width: 80%;
+  width: 90%;
 }
 
 button:hover{
   box-shadow: 0 2px 6px 5px lightgrey;
+}
+
+svg{
+  margin: 8px 8px 0 8px;
 }

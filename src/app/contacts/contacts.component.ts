@@ -39,7 +39,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
   }
 
   // getting index by clicked user
-  getUserIndex(id: number){
+  getUserId(id: number){
     this.usersService.getUserFromStorage(id);
   }
 

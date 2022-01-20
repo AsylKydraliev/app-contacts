@@ -10,6 +10,7 @@ h4{
   cursor: pointer;
   background-color: whitesmoke;
   font-size: 1em;
+  transition: 0.3s;
 }
 
 .tbl:hover{
@@ -28,4 +29,11 @@ li{
   list-style: none;
   padding: 10px;
 }
+
+svg:hover{
+  border-radius: 3px;
+  box-shadow: 0 0 10px 1px grey;
+}
+
+
 
