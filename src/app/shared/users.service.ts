@@ -16,7 +16,7 @@ export class UsersService {
   localUsers: Users[] = [];
 
   constructor(private http: HttpClient) {
-    if (this.users) {
+    if (!this.users) {
       this.getAllUsers();
     }
   }
